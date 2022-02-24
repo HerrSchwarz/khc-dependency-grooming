@@ -1,0 +1,36 @@
+name: Dependencies
+
+on:
+  schedule:
+    # "At 06:00 on Wednesday" UTC
+    # i.e. 7 am CET or 8 am CEST
+    # https://crontab.guru/#0_6_*_*_3
+    - cron: 0 6 * * 3
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3.0.0
+      with:
+        node-version: 14
+      - name: Update Dependencies
+        run: |
+          yarn ncu -u --packageFile package.json
+          yarn install
+          yarn upgrade
+      - name: Create Pull Request
+        with:
+          token: ${{ secrets.TOKEN }}
+          committer: GitHub Actions <actions@github.com>
+          commit-message: 'Update npm dependencies'
+          title: 'Update npm dependencies'
+          body: 'Please look at the diff for changes'
+          author: GitHub Actions <actions@github.com>
+          branch: update-dependencies
+          branch-suffix: timestamp
+        uses: peter-evans/create-pull-request@v3
