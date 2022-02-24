@@ -1,0 +1,27 @@
+{
+  "name": "khc-dependency-grooming",
+  "version": "1.0.0",
+  "description": "example for dependecy updates and security fixes",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HerrSchwarz/khc-dependency-grooming.git"
+  },
+  "keywords": [
+    "example",
+    "know-how-camp",
+    "silpion"
+  ],
+  "author": "Felix Eckhardt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HerrSchwarz/khc-dependency-grooming/issues"
+  },
+  "homepage": "https://github.com/HerrSchwarz/khc-dependency-grooming#readme",
+  "dependencies": {
+    "angular": "1.7.0"
+  }
+}
